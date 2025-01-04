@@ -1,7 +1,13 @@
-import { Module } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
+import { Module } from "@nestjs/common";
+import { ConfigModule } from "@nestjs/config";
+import { ConfigService } from "../../config/config";
 
 @Module({
-  imports: [ConfigService]
+  imports: [
+    ConfigModule.forRoot({
+      load: ConfigService,
+      isGlobal: true,
+    }),
+  ],
 })
-export class ConfigModule {}
+export class AppConfigModule {}
